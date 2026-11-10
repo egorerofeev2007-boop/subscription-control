@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Subscription Control" type="PythonConfigurationType" factoryName="Python">
+    <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
+    <option name="IS_MODULE_SDK" value="false" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+    <option name="PARAMETERS" value="runserver 127.0.0.1:8000 --noreload" />
+    <option name="ADD_CONTENT_ROOTS" value="true" />
+    <envs>
+      <env name="DJANGO_SECRET_KEY_FILE" value="C:/Users/egore/AppData/Local/SubscriptionControlPractice8/django-secret.txt" />
+      <env name="POSTGRES_HOST" value="127.0.0.1" />
+      <env name="POSTGRES_PORT" value="55438" />
+      <env name="POSTGRES_USER" value="practice8_admin" />
+      <env name="PGPASSFILE" value="C:/Users/egore/AppData/Local/SubscriptionControlPractice8/pgpass.conf" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

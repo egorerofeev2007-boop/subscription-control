@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="1800" viewBox="0 0 3000 1800">
+<rect width="100%" height="100%" fill="white"/>
+<polyline points="720,160 720,62 2500,62 2500,160" fill="none" stroke="#222222" stroke-width="4"/>
+<text x="735.00" y="138.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">1</text>
+<text x="2520.00" y="139.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">0..N</text>
+<polyline points="1010,330 1260,330" fill="none" stroke="#222222" stroke-width="4"/>
+<text x="1030.00" y="306.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">1</text>
+<text x="1155.00" y="307.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">0..N</text>
+<polyline points="460,625 460,980" fill="none" stroke="#222222" stroke-width="4"/>
+<text x="480.00" y="683.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">1</text>
+<text x="480.00" y="950.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">0..N</text>
+<polyline points="1630,445 1630,820 1100,820 1100,980" fill="none" stroke="#222222" stroke-width="4"/>
+<text x="1650.00" y="506.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">1</text>
+<text x="1120.00" y="950.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">0..N</text>
+<polyline points="1415,1230 1600,1230" fill="none" stroke="#222222" stroke-width="4"/>
+<text x="1432.00" y="1206.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">1</text>
+<text x="1485.00" y="1279.00" font-family="Arial Narrow,Arial,sans-serif" font-size="44" font-weight="bold" fill="#111111">0..N</text>
+<rect x="60" y="160" width="950" height="465" fill="white" stroke="#222222" stroke-width="4"/>
+<rect x="60" y="160" width="950" height="105" fill="#EFEFEF" stroke="#222222" stroke-width="4"/>
+<text x="430.50" y="205.00" font-family="Arial Narrow,Arial,sans-serif" font-size="57" font-weight="bold" fill="#111111">app_user</text>
+<text x="428.00" y="256.00" font-family="Arial Narrow,Arial,sans-serif" font-size="39" font-weight="normal" fill="#111111">Пользователь</text>
+<polyline points="649.0,265 649.0,625" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="308.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">PK id</text>
+<text x="664.00" y="308.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="60,325 1010,325" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">email</text>
+<text x="664.00" y="369.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">varchar(254)</text>
+<polyline points="60,385 1010,385" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="428.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">password_hash</text>
+<text x="664.00" y="429.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">varchar(256)</text>
+<polyline points="60,445 1010,445" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="488.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timezone</text>
+<text x="664.00" y="489.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">varchar(64)</text>
+<polyline points="60,505 1010,505" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="548.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">created_at</text>
+<text x="664.00" y="548.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timestamptz</text>
+<polyline points="60,565 1010,565" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="608.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">blocked_until</text>
+<text x="664.00" y="608.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timestamptz ?</text>
+<rect x="1260" y="160" width="740" height="285" fill="white" stroke="#222222" stroke-width="4"/>
+<rect x="1260" y="160" width="740" height="105" fill="#EFEFEF" stroke="#222222" stroke-width="4"/>
+<text x="1532.00" y="214.00" font-family="Arial Narrow,Arial,sans-serif" font-size="57" font-weight="bold" fill="#111111">category</text>
+<text x="1553.50" y="257.00" font-family="Arial Narrow,Arial,sans-serif" font-size="39" font-weight="normal" fill="#111111">Категория</text>
+<polyline points="1718.8,265 1718.8,445" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1275.00" y="308.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">PK id</text>
+<text x="1733.80" y="308.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="1260,325 2000,325" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1275.00" y="368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">FK owner_id</text>
+<text x="1733.80" y="368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="1260,385 2000,385" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1275.00" y="419.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">name</text>
+<text x="1733.80" y="429.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">varchar(50)</text>
+<rect x="2100" y="160" width="840" height="465" fill="white" stroke="#222222" stroke-width="4"/>
+<rect x="2100" y="160" width="840" height="105" fill="#EFEFEF" stroke="#222222" stroke-width="4"/>
+<text x="2369.50" y="215.00" font-family="Arial Narrow,Arial,sans-serif" font-size="57" font-weight="bold" fill="#111111">auth_session</text>
+<text x="2473.50" y="256.00" font-family="Arial Narrow,Arial,sans-serif" font-size="39" font-weight="normal" fill="#111111">Сеанс</text>
+<polyline points="2620.8,265 2620.8,625" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="2115.00" y="308.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">PK id</text>
+<text x="2635.80" y="308.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="2100,325 2940,325" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="2115.00" y="368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">FK user_id</text>
+<text x="2635.80" y="368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="2100,385 2940,385" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="2115.00" y="428.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">token_hash</text>
+<text x="2635.80" y="429.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">char(64)</text>
+<polyline points="2100,445 2940,445" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="2115.00" y="488.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">created_at</text>
+<text x="2635.80" y="488.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timestamptz</text>
+<polyline points="2100,505 2940,505" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="2115.00" y="548.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">last_seen_at</text>
+<text x="2635.80" y="548.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timestamptz</text>
+<polyline points="2100,565 2940,565" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="2115.00" y="608.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">revoked_at</text>
+<text x="2635.80" y="608.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timestamptz ?</text>
+<rect x="60" y="980" width="1355" height="585" fill="white" stroke="#222222" stroke-width="4"/>
+<rect x="60" y="980" width="1355" height="105" fill="#EFEFEF" stroke="#222222" stroke-width="4"/>
+<text x="596.00" y="1035.00" font-family="Arial Narrow,Arial,sans-serif" font-size="57" font-weight="bold" fill="#111111">subscription</text>
+<text x="666.00" y="1076.00" font-family="Arial Narrow,Arial,sans-serif" font-size="39" font-weight="normal" fill="#111111">Подписка</text>
+<polyline points="900.1,1085 900.1,1565" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="1128.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">PK id</text>
+<text x="915.10" y="1128.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="60,1145 1415,1145" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="1188.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">FK owner_id</text>
+<text x="915.10" y="1188.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="60,1205 1415,1205" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="1248.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">FK category_id</text>
+<text x="915.10" y="1248.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="60,1265 1415,1265" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="1299.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">name</text>
+<text x="915.10" y="1309.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">varchar(100)</text>
+<polyline points="60,1325 1415,1325" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="1368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">deactivated_from</text>
+<text x="915.10" y="1368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">date ?</text>
+<polyline points="60,1385 1415,1385" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="1428.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">row_version</text>
+<text x="915.10" y="1428.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">bigint</text>
+<polyline points="60,1445 1415,1445" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="1488.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">created_at</text>
+<text x="915.10" y="1488.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timestamptz</text>
+<polyline points="60,1505 1415,1505" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="75.00" y="1548.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">updated_at</text>
+<text x="915.10" y="1548.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timestamptz</text>
+<rect x="1600" y="980" width="1340" height="585" fill="white" stroke="#222222" stroke-width="4"/>
+<rect x="1600" y="980" width="1340" height="105" fill="#EFEFEF" stroke="#222222" stroke-width="4"/>
+<text x="2067.00" y="1035.00" font-family="Arial Narrow,Arial,sans-serif" font-size="57" font-weight="bold" fill="#111111">condition_version</text>
+<text x="2150.50" y="1077.00" font-family="Arial Narrow,Arial,sans-serif" font-size="39" font-weight="normal" fill="#111111">Версия условий</text>
+<polyline points="2430.8,1085 2430.8,1565" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1615.00" y="1128.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">PK id</text>
+<text x="2445.80" y="1128.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="1600,1145 2940,1145" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1615.00" y="1188.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">FK subscription_id</text>
+<text x="2445.80" y="1188.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">uuid</text>
+<polyline points="1600,1205 2940,1205" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1615.00" y="1248.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">valid_from</text>
+<text x="2445.80" y="1248.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">date</text>
+<polyline points="1600,1265 2940,1265" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1615.00" y="1308.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">anchor_date</text>
+<text x="2445.80" y="1308.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">date</text>
+<polyline points="1600,1325 2940,1325" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1615.00" y="1368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">price_kopecks</text>
+<text x="2445.80" y="1368.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">bigint</text>
+<polyline points="1600,1385 2940,1385" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1615.00" y="1428.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">period_count</text>
+<text x="2445.80" y="1428.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">smallint</text>
+<polyline points="1600,1445 2940,1445" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1615.00" y="1488.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">period_unit</text>
+<text x="2445.80" y="1488.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">varchar(5)</text>
+<polyline points="1600,1505 2940,1505" fill="none" stroke="#222222" stroke-width="2"/>
+<text x="1615.00" y="1548.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">created_at</text>
+<text x="2445.80" y="1548.00" font-family="Arial Narrow,Arial,sans-serif" font-size="50" font-weight="normal" fill="#111111">timestamptz</text>
+<text x="60.00" y="1631.00" font-family="Arial Narrow,Arial,sans-serif" font-size="43" font-weight="normal" fill="#111111">PK — первичный ключ; FK — внешний ключ; ? — NULL. Хотя FK допускает 0 версий, приложение создает ≥1.</text>
+<text x="60.00" y="1691.00" font-family="Arial Narrow,Arial,sans-serif" font-size="43" font-weight="normal" fill="#111111">Связь category → subscription составная: (category_id, owner_id) → (id, owner_id).</text>
+<text x="60.00" y="1752.00" font-family="Arial Narrow,Arial,sans-serif" font-size="43" font-weight="normal" fill="#111111">owner_id в subscription хранится намеренно: составной FK исключает выбор категории другого владельца.</text>
+</svg>

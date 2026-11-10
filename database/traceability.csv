@@ -1,0 +1,32 @@
+﻿Требование,Компоненты,Таблицы и механизм,TC из ОКФКС
+FR-01,"C01–C03, C07–08","app_user, auth_session, login_attempt, audit_event","01–03, 16, 24"
+FR-02,"C01–C04, C07–08","subscription, condition_version, request_operation, audit_event","04–05, 15, 17, 25"
+FR-03,"C01–02, C06–08",condition_version; предпросмотр вычисляется,05–06
+FR-04,"C01–02, C05, C07–08","category, subscription","10, 16, 25"
+FR-05,"C01–C04, C07–08","subscription, condition_version, request_operation, audit_event","11–14, 16, 24"
+FR-06,"C01–02, C06–08","subscription, condition_version, category; события вычисляются","07, 25"
+FR-07,"C01–02, C06–08","app_user, subscription, condition_version, category","08–09, 23–24"
+BR-01,C06,condition_version: исходная дата и период,"06–07, 23"
+BR-02,C06–08,"subscription, condition_version; выбор нужного месяца","07–08, 23"
+BR-03,C06,"app_user, subscription, condition_version; актуальные условия","08–09, 13, 23–24"
+BR-04,"C06, C08",condition_version.price_kopecks; точная арифметика,"08–09, 23"
+BR-05,"C04, C06–08",condition_version; уникальная дата действия,"11–12, 24"
+BR-06,"C04, C06–08","subscription.deactivated_from, condition_version CASCADE","13–14, 24"
+NFR-01,C01,Прямой ответственности БД нет: удобство интерфейса,20; CL-01
+NFR-02,"C01, C06–08, C10",Индексы subscription и condition_version; страницы по 50,"19, 25"
+NFR-03,C01,Прямой ответственности БД нет: совместимость браузеров,20; CL-01
+NFR-04,C02–C08,"Все таблицы; модуль C07, индексы, миграции","19, 22, 25"
+NFR-05,"C03–04, C07–08","Основные таблицы, сеансы, операции и аудит; транзакции","01, 04, 15, 17, 21"
+NFR-06,"C01, C04, C07–08",request_operation; уникальный ключ и отпечаток,"15, 17"
+NFR-07,C08–09,"Все таблицы; backup_run — метаданные, архив вне БД",21
+NFR-08,"C03, C07–08","app_user, auth_session, category, subscription; owner-фильтр",16
+NFR-09,"C03, C08, C10","app_user.password_hash, auth_session; HTTPS и cookie вне DDL",18
+NFR-10,"C03, C07–08","login_attempt, app_user.blocked_until, auth_session","01, 03"
+NFR-11,C02–C08,Ограничения всех основных таблиц; row_version,"02, 05, 10, 12, 18"
+NFR-12,C07–C09,audit_event; очистка и административный доступ C09,"18, 21"
+NFR-13,C07–C10,"Сеансы, подписки, версии, операции и аудит; транзакции",17
+HW-01,C01,Прямой ответственности БД нет: клиент и сеть,20
+HW-02,C08–C10,Все таблицы; сервер и внешний резервный узел,"19, 21–22"
+SW-01,C02–C10,"PostgreSQL 16, все таблицы; миграции Django",22
+IC-01,"C01–02, C08","timezone, price_kopecks, DATE, TIMESTAMPTZ; UTF-8",24–25
+DOC-01,C01–C10,"Документация схемы, миграций и проверок; таблица не нужна",22

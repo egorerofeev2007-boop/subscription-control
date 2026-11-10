@@ -1,0 +1,636 @@
+{
+  "dbms": "PostgreSQL 16.x",
+  "schema": "subscription_control",
+  "verification_count": 49,
+  "tables": [
+    {
+      "name": "app_user",
+      "title": "Пользователь",
+      "description": "Учетная запись, часовой пояс и срок ограничения входа.",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false,
+          "description": "Идентификатор пользователя"
+        },
+        {
+          "name": "email",
+          "type": "varchar(254)",
+          "key": "UQ lower",
+          "nullable": false,
+          "description": "Почта; уникальна без учета регистра"
+        },
+        {
+          "name": "password_hash",
+          "type": "varchar(256)",
+          "key": "",
+          "nullable": false,
+          "description": "Адаптивный хеш Django; не пароль"
+        },
+        {
+          "name": "timezone",
+          "type": "varchar(64)",
+          "key": "",
+          "nullable": false,
+          "description": "Идентификатор IANA; проверяет C03"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Момент регистрации"
+        },
+        {
+          "name": "blocked_until",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": true,
+          "description": "Окончание ограничения входа"
+        }
+      ],
+      "constraints": [
+        "PK(id)",
+        "UNIQUE INDEX lower(email)",
+        "CHECK email без пробелов, хеш и timezone не пусты"
+      ]
+    },
+    {
+      "name": "category",
+      "title": "Категория",
+      "description": "Личный набор готовых и созданных вручную категорий.",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false,
+          "description": "Идентификатор категории"
+        },
+        {
+          "name": "owner_id",
+          "type": "uuid",
+          "key": "FK",
+          "nullable": false,
+          "description": "Владелец"
+        },
+        {
+          "name": "name",
+          "type": "varchar(50)",
+          "key": "UQ owner/name",
+          "nullable": false,
+          "description": "Название"
+        }
+      ],
+      "constraints": [
+        "UNIQUE(owner_id,name)",
+        "UNIQUE(id,owner_id)",
+        "CHECK длина 1–50, без пробелов по краям"
+      ]
+    },
+    {
+      "name": "subscription",
+      "title": "Подписка",
+      "description": "Личная карточка; текущая цена хранится только в версиях условий.",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false,
+          "description": "Идентификатор подписки"
+        },
+        {
+          "name": "owner_id",
+          "type": "uuid",
+          "key": "FK",
+          "nullable": false,
+          "description": "Владелец"
+        },
+        {
+          "name": "category_id",
+          "type": "uuid",
+          "key": "FK composite",
+          "nullable": false,
+          "description": "Собственная категория"
+        },
+        {
+          "name": "name",
+          "type": "varchar(100)",
+          "key": "",
+          "nullable": false,
+          "description": "Название услуги"
+        },
+        {
+          "name": "deactivated_from",
+          "type": "date",
+          "key": "",
+          "nullable": true,
+          "description": "С этой даты события не учитываются"
+        },
+        {
+          "name": "row_version",
+          "type": "bigint",
+          "key": "",
+          "nullable": false,
+          "description": "Счетчик для условного UPDATE"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Создание"
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Изменение"
+        }
+      ],
+      "constraints": [
+        "UNIQUE(id,owner_id)",
+        "FK(category_id,owner_id)",
+        "CHECK имя 1–100, дата 2000–2100, row_version≥1"
+      ]
+    },
+    {
+      "name": "condition_version",
+      "title": "Версия условий",
+      "description": "Цена и правило повторения, действующие с календарной даты.",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false,
+          "description": "Идентификатор версии"
+        },
+        {
+          "name": "subscription_id",
+          "type": "uuid",
+          "key": "FK",
+          "nullable": false,
+          "description": "Подписка"
+        },
+        {
+          "name": "valid_from",
+          "type": "date",
+          "key": "UQ sub/date",
+          "nullable": false,
+          "description": "Начало действия"
+        },
+        {
+          "name": "anchor_date",
+          "type": "date",
+          "key": "",
+          "nullable": false,
+          "description": "Исходная привязка расписания"
+        },
+        {
+          "name": "price_kopecks",
+          "type": "bigint",
+          "key": "",
+          "nullable": false,
+          "description": "Цена в копейках"
+        },
+        {
+          "name": "period_count",
+          "type": "smallint",
+          "key": "",
+          "nullable": false,
+          "description": "Число периодов"
+        },
+        {
+          "name": "period_unit",
+          "type": "varchar(5)",
+          "key": "",
+          "nullable": false,
+          "description": "week/month/year"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Создание версии"
+        }
+      ],
+      "constraints": [
+        "UNIQUE(subscription_id,valid_from)",
+        "CHECK копейки 1–99999999; период 1–120",
+        "CHECK даты 2000–2100; FK CASCADE"
+      ]
+    },
+    {
+      "name": "auth_session",
+      "title": "Сеанс",
+      "description": "Серверное состояние; случайный ключ cookie хранится только как хеш.",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false,
+          "description": "ID сеанса"
+        },
+        {
+          "name": "user_id",
+          "type": "uuid",
+          "key": "FK",
+          "nullable": false,
+          "description": "Пользователь"
+        },
+        {
+          "name": "token_hash",
+          "type": "char(64)",
+          "key": "UQ",
+          "nullable": false,
+          "description": "Хеш ключа сеанса"
+        },
+        {
+          "name": "created_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Создание"
+        },
+        {
+          "name": "last_seen_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Последняя активность"
+        },
+        {
+          "name": "revoked_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": true,
+          "description": "Отзыв"
+        }
+      ],
+      "constraints": [
+        "UNIQUE(token_hash)",
+        "CHECK хеш 64 hex, монотонные отметки; простой проверяет C03"
+      ]
+    },
+    {
+      "name": "request_operation",
+      "title": "Операция запроса",
+      "description": "Защита повторного создания; ключ и исторический ID сохраняются после удаления.",
+      "attributes": [
+        {
+          "name": "owner_id",
+          "type": "uuid",
+          "key": "PK, FK",
+          "nullable": false,
+          "description": "Владелец"
+        },
+        {
+          "name": "operation_key",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false,
+          "description": "Ключ операции"
+        },
+        {
+          "name": "payload_hash",
+          "type": "char(64)",
+          "key": "",
+          "nullable": false,
+          "description": "Хеш нормализованного ввода"
+        },
+        {
+          "name": "original_result_id",
+          "type": "uuid",
+          "key": "historical",
+          "nullable": false,
+          "description": "Исходный ID результата без FK"
+        },
+        {
+          "name": "subscription_id",
+          "type": "uuid",
+          "key": "FK composite",
+          "nullable": true,
+          "description": "Живой результат; NULL после удаления"
+        },
+        {
+          "name": "result_version",
+          "type": "bigint",
+          "key": "",
+          "nullable": false,
+          "description": "Версия при создании"
+        },
+        {
+          "name": "completed_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Фиксация результата"
+        }
+      ],
+      "constraints": [
+        "PK(owner_id,operation_key)",
+        "ON DELETE SET NULL(subscription_id)",
+        "CHECK живая ссылка равна историческому ID"
+      ]
+    },
+    {
+      "name": "login_attempt",
+      "title": "Попытка входа",
+      "description": "Временные записи для скользящих окон 15 минут; IP заменен HMAC.",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "bigint identity",
+          "key": "PK",
+          "nullable": false,
+          "description": "ID попытки"
+        },
+        {
+          "name": "account_id",
+          "type": "uuid",
+          "key": "FK",
+          "nullable": true,
+          "description": "Учетная запись, если найдена"
+        },
+        {
+          "name": "ip_digest",
+          "type": "char(64)",
+          "key": "",
+          "nullable": false,
+          "description": "HMAC IP; исходного IP нет"
+        },
+        {
+          "name": "attempted_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Время попытки"
+        },
+        {
+          "name": "outcome",
+          "type": "varchar(16)",
+          "key": "",
+          "nullable": false,
+          "description": "ok/wrong_password/blocked/invalid"
+        }
+      ],
+      "constraints": [
+        "FK account ON DELETE SET NULL",
+        "CHECK исход и хеш; очистка по времени — C09"
+      ]
+    },
+    {
+      "name": "audit_event",
+      "title": "Событие аудита",
+      "description": "Служебные метаданные; без секретов, IP, названий и цен подписок.",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "bigint identity",
+          "key": "PK",
+          "nullable": false,
+          "description": "ID события"
+        },
+        {
+          "name": "occurred_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Время события"
+        },
+        {
+          "name": "event_type",
+          "type": "varchar(32)",
+          "key": "",
+          "nullable": false,
+          "description": "Тип из перечня"
+        },
+        {
+          "name": "actor_id",
+          "type": "uuid",
+          "key": "historical",
+          "nullable": true,
+          "description": "Исторический участник без FK"
+        },
+        {
+          "name": "object_type",
+          "type": "varchar(32)",
+          "key": "",
+          "nullable": true,
+          "description": "Тип объекта"
+        },
+        {
+          "name": "object_id",
+          "type": "uuid",
+          "key": "historical",
+          "nullable": true,
+          "description": "Исторический ID объекта без FK"
+        },
+        {
+          "name": "result",
+          "type": "varchar(7)",
+          "key": "",
+          "nullable": false,
+          "description": "success/failure/denied"
+        }
+      ],
+      "constraints": [
+        "CHECK тип и результат",
+        "object_type и object_id одновременно заданы или NULL",
+        "Хранение 30 дней, доступ — C09"
+      ]
+    },
+    {
+      "name": "backup_run",
+      "title": "Копирование и восстановление",
+      "description": "Метаданные инфраструктурных операций; сами архивы хранятся вне рабочего узла.",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "uuid",
+          "key": "PK",
+          "nullable": false,
+          "description": "ID запуска"
+        },
+        {
+          "name": "started_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": false,
+          "description": "Начало"
+        },
+        {
+          "name": "finished_at",
+          "type": "timestamptz",
+          "key": "",
+          "nullable": true,
+          "description": "Завершение"
+        },
+        {
+          "name": "operation_type",
+          "type": "varchar(7)",
+          "key": "",
+          "nullable": false,
+          "description": "backup/restore"
+        },
+        {
+          "name": "status",
+          "type": "varchar(7)",
+          "key": "",
+          "nullable": false,
+          "description": "running/success/failure"
+        },
+        {
+          "name": "archive_key",
+          "type": "varchar(200)",
+          "key": "",
+          "nullable": false,
+          "description": "Непустой технический ключ архива"
+        },
+        {
+          "name": "checksum",
+          "type": "char(64)",
+          "key": "",
+          "nullable": true,
+          "description": "SHA-256 архива"
+        },
+        {
+          "name": "bytes_count",
+          "type": "bigint",
+          "key": "",
+          "nullable": true,
+          "description": "Размер архива в байтах"
+        }
+      ],
+      "constraints": [
+        "CHECK согласованность статуса и времени",
+        "Для success обязательны checksum и bytes_count",
+        "Строка не доказывает существование архива"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from_table": "category",
+      "from_columns": [
+        "owner_id"
+      ],
+      "to_table": "app_user",
+      "to_columns": [
+        "id"
+      ],
+      "cardinality": "N:1",
+      "on_delete": "RESTRICT",
+      "description": "У каждого пользователя 0..N категорий"
+    },
+    {
+      "from_table": "subscription",
+      "from_columns": [
+        "owner_id"
+      ],
+      "to_table": "app_user",
+      "to_columns": [
+        "id"
+      ],
+      "cardinality": "N:1",
+      "on_delete": "RESTRICT",
+      "description": "У каждого пользователя 0..N подписок"
+    },
+    {
+      "from_table": "subscription",
+      "from_columns": [
+        "category_id",
+        "owner_id"
+      ],
+      "to_table": "category",
+      "to_columns": [
+        "id",
+        "owner_id"
+      ],
+      "cardinality": "N:1",
+      "on_delete": "RESTRICT",
+      "description": "Подписке обязательна одна собственная категория"
+    },
+    {
+      "from_table": "condition_version",
+      "from_columns": [
+        "subscription_id"
+      ],
+      "to_table": "subscription",
+      "to_columns": [
+        "id"
+      ],
+      "cardinality": "N:1",
+      "on_delete": "CASCADE",
+      "description": "0..N версий; приложение создает минимум одну в общей транзакции"
+    },
+    {
+      "from_table": "auth_session",
+      "from_columns": [
+        "user_id"
+      ],
+      "to_table": "app_user",
+      "to_columns": [
+        "id"
+      ],
+      "cardinality": "N:1",
+      "on_delete": "CASCADE",
+      "description": "0..N сеансов пользователя"
+    },
+    {
+      "from_table": "request_operation",
+      "from_columns": [
+        "owner_id"
+      ],
+      "to_table": "app_user",
+      "to_columns": [
+        "id"
+      ],
+      "cardinality": "N:1",
+      "on_delete": "RESTRICT",
+      "description": "0..N ключей операций пользователя"
+    },
+    {
+      "from_table": "request_operation",
+      "from_columns": [
+        "subscription_id",
+        "owner_id"
+      ],
+      "to_table": "subscription",
+      "to_columns": [
+        "id",
+        "owner_id"
+      ],
+      "cardinality": "N:0..1",
+      "on_delete": "SET NULL(subscription_id)",
+      "description": "Живая ссылка необязательна; исторический ID сохраняется"
+    },
+    {
+      "from_table": "login_attempt",
+      "from_columns": [
+        "account_id"
+      ],
+      "to_table": "app_user",
+      "to_columns": [
+        "id"
+      ],
+      "cardinality": "N:0..1",
+      "on_delete": "SET NULL",
+      "description": "Учетная запись может отсутствовать при отказе"
+    }
+  ],
+  "notes": [
+    "Исторические ID audit_event и original_result_id не являются FK.",
+    "В app_user 6 полей; в subscription 8; всего 9 таблиц.",
+    "Владелец subscription при глобальном category.id — ограниченная денормализация для индекса и составного FK.",
+    "Данные календаря и итоги вычисляются, не хранятся отдельными таблицами.",
+    "Проверки SQL не равнозначны выполнению TC-01–TC-25 приложения."
+  ]
+}
